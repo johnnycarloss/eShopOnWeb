@@ -30,8 +30,6 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'Analia_eShopOnWeb'
-    cliProjectName: 'Analia_eShopOnWeb'
-    cliSources: '.'
     cliProjectName: Analia_eShopOnWeb
     cliSources: '$(System.DefaultWorkingDirectory)'
   continueOnError: true
