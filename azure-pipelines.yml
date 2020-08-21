@@ -15,6 +15,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
 
 - task: NuGetToolInstaller@1
 
@@ -44,7 +49,7 @@ steps:
   displayName: Test
   inputs:
     command: test
-    projects: '$(Parameters.UnitTestProjects)'
+    projects: '**/*UnitTests/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: SonarCloudAnalyze@1
