@@ -15,6 +15,15 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+# Command line
+# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir d:\a\1\eShopOnWeb' 
+    #workingDirectory: # Optional
+    #failOnStderr: false # Optional
+
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
@@ -43,7 +52,7 @@ steps:
   displayName: Build
   inputs:
     projects: '$(Parameters.RestoreBuildProjects)'
-    arguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site"'
+    arguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\eShopOnWeb"'
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
