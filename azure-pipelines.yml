@@ -35,10 +35,10 @@ steps:
   continueOnError: true
 
 - task: DotNetCoreCLI@2
-  displayName: Restore
+  displayName: Build
   inputs:
-    command: restore
     projects: '$(Parameters.RestoreBuildProjects)'
+    arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: Test
