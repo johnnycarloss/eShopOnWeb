@@ -24,13 +24,14 @@ steps:
     
 
 - task: SonarCloudPrepare@1
-  displayName: 'Prepare analysis on SonarCloud'
   inputs:
-    SonarCloud: SONAR
-    organization: promove
-    scannerMode: CLI
-    configMode: manual
-    cliProjectKey: Analia_eShopOnWeb
+    SonarCloud: 'SONAR Analia'
+    organization: 'promove'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'Analia_eShopOnWeb'
+    cliProjectName: 'Analia_eShopOnWeb'
+    cliSources: '.'
     cliProjectName: Analia_eShopOnWeb
     cliSources: '$(System.DefaultWorkingDirectory)'
   continueOnError: true
