@@ -24,7 +24,7 @@ steps:
 - task: SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
-    SonarCloud: 'https://sonarcloud.io/'
+    SonarCloud: SONAR
     organization: promove
     projectKey: 'Analia_eShopOnWeb'
     projectName: 'Analia_eShopOnWeb'
