@@ -43,8 +43,7 @@ steps:
   displayName: Build
   inputs:
     projects: '$(Parameters.RestoreBuildProjects)'
-    arguments: '--configuration $(BuildConfiguration)'
-
+    arguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site"'
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
