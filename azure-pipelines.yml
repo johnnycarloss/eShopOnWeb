@@ -27,13 +27,6 @@ steps:
     command: restore
     projects: '**/*.csproj'
 
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-    
-
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SONAR Analia'
