@@ -27,7 +27,7 @@ steps:
     SonarCloud: 'https://sonarcloud.io/'
     organization: promove
     projectKey: 'Analia_eShopOnWeb'
-    projectName: 'Projeto eShop on Web Analia'
+    projectName: 'Analia_eShopOnWeb'
   continueOnError: true
 
 - task: DotNetCoreCLI@2
