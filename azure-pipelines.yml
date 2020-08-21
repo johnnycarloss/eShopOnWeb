@@ -22,11 +22,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
     
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    command: restore
-    projects: '$(Parameters.RestoreBuildProjects)'
 
 - task: SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
@@ -39,6 +34,12 @@ steps:
     cliProjectName: Analia_eShopOnWeb
     cliSources: '$(System.DefaultWorkingDirectory)'
   continueOnError: true
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: '$(Parameters.RestoreBuildProjects)'
 
 - task: DotNetCoreCLI@2
   displayName: Build
