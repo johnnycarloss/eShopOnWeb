@@ -7,22 +7,19 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'VS2017-Win2016'
 
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
 
 steps:
-# Command line
-# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
 
-- task: CmdLine@2
+- task: DotNetCoreInstaller@0
+  displayName: 'Use .NET Core sdk 2.1.5'
   inputs:
-    script: 'mkdir d:\a\1\eShopOnWeb' 
-    #workingDirectory: # Optional
-    #failOnStderr: false # Optional
+    version: 2.1.403
 
 - task: DotNetCoreCLI@2
   displayName: Restore
@@ -51,8 +48,8 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
-    projects: '$(Parameters.RestoreBuildProjects)'
-    arguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\eShopOnWeb"'
+    projects: '**/*.sln'
+    arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: Test
@@ -73,7 +70,8 @@ steps:
   displayName: Publish
   inputs:
     command: publish
-    publishWebProjects: True
+    publishWebProjects: false
+    projects: '**/*.sln'
     arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
     zipAfterPublish: True
 
