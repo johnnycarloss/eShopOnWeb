@@ -68,6 +68,12 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
     zipAfterPublish: True
 
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(build.artifactstagingdirectory)\test_reports\test_coverage.xml'
+    pathToSources: '$(build.artifactstagingdirectory)\test_reports\test_coverage'
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
