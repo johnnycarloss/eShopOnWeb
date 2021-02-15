@@ -35,8 +35,8 @@ steps:
     organization: 'projetos-dev-1'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'projetos-dev-1'
-    cliProjectName: projetos-dev-1
+    cliProjectKey: 'eshop'
+    cliProjectName: eshop
     cliSources: '$(System.DefaultWorkingDirectory)'
   continueOnError: true
 
